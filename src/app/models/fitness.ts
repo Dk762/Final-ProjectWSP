@@ -4,11 +4,10 @@ export class Fitness{
         "eat 2 eggs in the morning",
         "take light dinner everyday"
     ];
-    Users:User[] = [
-        { Name: 'Dk' }
-    ];
+    Users:User[] = [];
     Completed:Routine[] = [
-        { Task: "Walk 2 Miles", UserName:'Dk', Completed: true } 
+         { Task: "15 min running", UserName:'Dk', Completed:true },
+        { Task: "15 min swimming", UserName:'Kp', Completed:true}
     ];
 }
 export class User{
