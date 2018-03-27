@@ -6,7 +6,7 @@ export class Fitness{
     ];
     Users:User[] = [];
     Completed:Routine[] = [
-         { Task: "15 min running", UserName:'Dk', Completed:true },
+        { Task: "10 min running", UserName:'Dk', Completed:true },
         { Task: "15 min swimming", UserName:'Kp', Completed:true}
     ];
 }
@@ -18,5 +18,6 @@ export class Routine{
    Task:string;
    UserName:string;
    Completed:boolean = false;
+   
    
 }

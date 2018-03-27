@@ -12,12 +12,15 @@
 
   <div class="list-group col-md-4">
     <div class="card bg-dark">
-      <div class="card-header text-white">Cmpleted Task</div>
-      <ul class="list-group list-group-flush">
-        <li *ngFor="let routine of Model.Completed" class="list-group-item-text">
-          {{routine.UserName}} : {{routine.Text}}
+      <div class="card-header text-white">
+        Completed Task
+      </div>
+      <ul class="list-group list-group-flush ">
+        <li *ngFor="let routine of Model.Completed" class="list-group-item">
+          {{routine.UserName}} : {{routine.Task}}
         </li>
       </ul>
     </div>
   </div>
-
+</div>
+  
