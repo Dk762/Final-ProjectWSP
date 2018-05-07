@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RoutineService } from '../services/routine.service';
 
+declare var googleyolo: any;
+declare var FB: any;
+declare var window: any;
 
 @Component({
   selector: 'app-login',
@@ -9,12 +12,54 @@ import { RoutineService } from '../services/routine.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _Routine: RoutineService) { }
+  constructor(private _Routine: RoutineService) {
+
+    window.fbAsyncInit = () => {
+      FB.init({
+          appId     : '1267942203349903',
+          cookie    :  true,
+          xfbml     :  true,
+          version   :  'v2.12'
+      });
+
+      FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = <HTMLScriptElement>d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+   }
 
   ngOnInit() {
   }
 
   login(Name: string, Password: string){
     this._Routine.login(Name, Password);
+  }
+  
+  googlelogin(){
+    googleyolo.hint({
+      supportedAuthMethods: [
+        "https://accounts.google.com"
+      ],
+      supportedIdTokenProviders: [
+        {
+          uri: "https://accounts.google.com",
+          clientId: "1004007759163-e9s4orbn6dq588geu46tk9dlh5sggr6b.apps.googleusercontent.com "
+        }
+      ]
+    }).then((credentials: any) =>{
+        this._Routine.oAuthLogin(credentials.displayName, credentials.idToken, credentials.profilePicture);
+        console.log(credentials);
+    })
+  }
+  fblogin(){
+      FB.login((credentials: any) => {
+          console.log(credentials);
+      })
   }
 }

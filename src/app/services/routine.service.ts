@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 export class RoutineService {
   
   Me: User;
+  pic: string;
+  token: string
 
 
   constructor(private http: Http, private _Router: Router) {
@@ -17,6 +19,13 @@ export class RoutineService {
        this.Me = { Name: name };
        this._Router.navigate(['/routine']);
      }
+   }
+
+   oAuthLogin(Name: string, token: string, pic: string){
+     this.Me = { Name: name}
+     this.pic = pic;
+     this.token = token;
+     this._Router.navigate(['/routine']);
    }
 
 }
