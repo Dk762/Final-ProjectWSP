@@ -4,20 +4,22 @@ export class Fitness{
         "eat 2 eggs in the morning",
         "take light dinner everyday"
     ];
-    Users:User[] = [];
+    Users:User[] = [
+        { Name: 'Dhaval'}
+    ];
+    ChossenTask:Routine[] = [
+        
+    ]
     Completed:Routine[] = [
-        { Task: "10 min running", UserName:'Dk', Completed:true },
-        { Task: "15 min swimming", UserName:'Kp', Completed:true}
+        
     ];
 }
 export class User{
-    Name:string;
+    Name: string;
 }
 
 export class Routine{
    Task:string;
    UserName:string;
-   Completed:boolean = false;
-   
-   
+   Completed:boolean = false;  
 }
