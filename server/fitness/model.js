@@ -1,3 +1,4 @@
+var axios = require("axios");
 const RoutinesStack = [
         "In the Morning Do Yoga for 20 Minutes",
         "In the Morning Do cycling for 5 mile",
@@ -38,7 +39,7 @@ var iCurrentPicture = 0;
 
 function Fitness(){
     this.Users = [];
+    this.GetRoutines = () => RoutinesStack.slice(iCurrentRoutine, iCurrentRoutine += 7);
 
 }
-var GetRoutines = () => RoutinesStack.slice(iCurrentRoutine, iCurrentRoutine += 19)
-module.exports.GetRoutines = GetRoutines;
+module.exports = Fitness;

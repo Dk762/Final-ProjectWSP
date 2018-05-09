@@ -1,25 +1,24 @@
 export class Fitness{
-    Routine:string[] = [
-        "Do cycling everyday",
-        "eat 2 eggs in the morning",
-        "take light dinner everyday"
-    ];
+    
     Users:User[] = [
-        { Name: 'Dhaval'}
+        { Name: 'Dhaval', Routines: [] },
+        { Name: 'Patel', Routines: [] },
+        { Name: 'Kp', Routines: [] },
     ];
-    ChossenTask:Routine[] = [
-        
-    ]
+    ChosenTask:Routine[] = [
+        {Task: "Perfect Meal", UserName: "DK", Chosen:false}
+    ];
     Completed:Routine[] = [
         
     ];
 }
 export class User{
     Name: string;
+    Routines: string[];
 }
 
 export class Routine{
    Task:string;
    UserName:string;
-   Completed:boolean = false;  
+   Chosen:boolean = false;  
 }

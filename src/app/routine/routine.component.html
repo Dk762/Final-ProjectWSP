@@ -3,8 +3,11 @@
     <div class="card bg-dark">
       <div class="card-header text-white">Tasks</div>
       <ul class="list-group list-group-flush">
-        <li *ngFor="let routine of Model.Routine" class="list-group-item" (click)="selectTask($event, routine)">
-          {{routine}}
+        <li *ngFor="let routine of Me.Routines" 
+            (click)="selectTask($event, routine)"
+            [ngClass]="{ enabled: !MyChosenTask() }"
+            class="list-group-item" >
+            {{routine}}
         </li>
       </ul>
     </div>
@@ -13,12 +16,14 @@
   <div class="list-group col-md-8">
     <div class="card bg-dark">
       <div class="card-header text-white">
-        Chossen Task
+        Chosen Task
       </div>
       <ul class="list-group list-group-flush ">
-        <li *ngFor="let routine of Model.ChossenTask" class="list-group-item" class="list-group-item d-flex justify-content-between align-items-center">
+        <li *ngFor="let routine of Model.ChosenTask"
+            class="list-group-item d-flex justify-content-between align-items-center">
             {{routine.Task}}
-            <span class="badge badge-light">{{routine.UserName}}</span>
+            <span  class="badge badge-primary">{{routine.UserName}}</span>
+            
         </li>
       </ul>
     </div>

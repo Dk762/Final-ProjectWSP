@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Fitness, User, Routine } from '../models/fitness'
 import { Router } from '@angular/router';
 import { RoutineService } from '../services/routine.service';
-import { Http } from '@angular/http';
-
+import { Http } from "@angular/http";
 
 @Component({
   selector: 'app-routine',
@@ -13,19 +12,17 @@ import { Http } from '@angular/http';
 export class RoutineComponent implements OnInit {
 
    Model = new Fitness();
-   Me = new User;
+   Me = new User();
 
-   private _api = "http://localhost:8080/"
+   private _api = "http://localhost:8080/fitness";
   constructor(
     private http: Http,
     private _Routine: RoutineService,
     private _Router: Router
   ){
     this.Me.Name = "Dhaval"
-    //this.Me = _Routine.Me;
-    //if(!this.Me) {
-      //_Router.navigate(['/login']);
-  //}
+    http.get(this._api + "/routines").subscribe(data=> this.Me.Routines = data.json())
+    
 }
     
   
@@ -34,14 +31,13 @@ ngOnInit() {
 selectTask(e: MouseEvent, text: string){
   e.preventDefault();
 
-  if(this.MyChossenTask()) return;
+  if(this.MyChosenTask()) return;
 
-  this.Model.ChossenTask.push({ Task: text, UserName: this.Me.Name, Completed: false });
-  this.Model.Routine.splice( this.Model.Routine.indexOf(text), 1);
+  this.Model.ChosenTask.push({ Task: text, UserName: this.Me.Name, Chosen: false });
+  this.Me.Routines.splice( this.Me.Routines.indexOf(text), 1);
 }  
 
-MyChossenTask(): Routine | null{
-  return this.Model.ChossenTask.find( x => x.UserName == this.Me.Name)
-}
+MyChosenTask = () => this.Model.ChosenTask.find(x=> x.UserName == this.Me.Name );
+ChosenTask = () => this.Model.ChosenTask.find( x => x.Chosen );
 
 }
