@@ -28,6 +28,11 @@ export class RoutineComponent implements OnInit {
   
 ngOnInit() {
   }
+
+flipPicture(e: MouseEvent){
+  this.http.post(this._api + "/picture",{})
+        .subscribe();
+}  
 selectTask(e: MouseEvent, text: string){
   e.preventDefault();
 

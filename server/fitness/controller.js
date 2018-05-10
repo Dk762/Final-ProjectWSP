@@ -8,5 +8,5 @@ var app = express.Router();
 var fitness = new Fitness();
 module.exports = app
     .get('/routines', (req, res) => res.send(fitness.GetRoutines() ) )
-    
+    .post('/picture', (req, res) => res.send(fitness.FlipPicture() ))
     

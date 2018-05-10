@@ -8,6 +8,9 @@ export class Fitness{
     ChosenTask:Routine[] = [
         {Task: "Perfect Meal", UserName: "DK", Chosen:false}
     ];
+    Picture: {
+        
+    };
     Completed:Routine[] = [
         
     ];

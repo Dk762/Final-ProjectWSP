@@ -24,22 +24,22 @@ const RoutinesStack = [
 
 var iCurrentRoutine = 0;
 
-const PictureStack = [
-
-
+var PicturesStack = [
+    "https://www.daimanuel.com/wp-content/uploads/2014/03/Benefits-of-Swimming.jpg",
+    "http://www.ourfamilyworld.com/wp-content/uploads/2016/08/pregnancy-workout-books.jpg",
+    "https://i.pinimg.com/originals/8e/80/8e/8e808ec49834ec2b86d73d1e5d71ed22.jpg",
+    "https://image.slidesharecdn.com/1428003825551d9bf1d522b-150402144350-conversion-gate01/95/you-need-this-info-to-be-fit-1-638.jpg?cb=1427985837",
+    "https://i.pinimg.com/originals/9a/09/5d/9a095db6d58f77f5f82c38ab51c31026.jpg",
 ];
 
 var iCurrentPicture = 0;
-
-
-
-
-
-
-
 function Fitness(){
     this.Users = [];
+    this.Picture = null;
+    this.ChosenTask = [];
     this.GetRoutines = () => RoutinesStack.slice(iCurrentRoutine, iCurrentRoutine += 7);
-
+    this.FlipPicture = () => this.Picture = PicturesStack[iCurrentPicture = (iCurrentPicture + 1) % PicturesStack.length ];
+    this.selectTask = (text, userName) => this.ChosenTask.push({Task: text, UserName: userName });
+    
 }
 module.exports = Fitness;
