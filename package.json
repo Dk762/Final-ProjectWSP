@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build-dev": "ng build --watch",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -24,6 +24,7 @@
     "@angular/router": "^5.2.0",
     "@ng-bootstrap/ng-bootstrap": "^2.0.0",
     "axios": "^0.18.0",
+    "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",
     "express": "^4.16.3",
@@ -32,7 +33,7 @@
     "nodemon": "^1.17.2",
     "popper.js": "^1.14.1",
     "rxjs": "^5.5.10",
-    "zone.js": "^0.8.19"
+    "zone.js": "^0.8.20"
   },
   "devDependencies": {
     "@angular/cli": "~1.7.3",
