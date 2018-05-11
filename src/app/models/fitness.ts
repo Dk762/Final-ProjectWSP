@@ -1,17 +1,12 @@
 export class Fitness{
     
-    Users:User[] = [
-        { Name: 'Dhaval', Routines: [] },
-        { Name: 'Patel', Routines: [] },
-        { Name: 'Kp', Routines: [] },
-    ];
-    ChosenTask:Routine[] = [
-        {Task: "Perfect Meal", UserName: "DK", Chosen:false}
-    ];
+    Users:User[];
     Picture: {
-        
+        url: string
     };
-    Completed:Routine[] = [
+    ChosenTask:Routine[];
+
+    CompletedTask:Routine[] = [
         
     ];
 }

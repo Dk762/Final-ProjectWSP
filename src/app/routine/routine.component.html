@@ -2,11 +2,11 @@
   <div class="col-md-4">
     <div class="card bg-dark">
       <div class="card-header text-white">Tasks</div>
-      <ul class="list-group list-group-flush">
+      <ul class="list-group list-group-flush routine">
         <li *ngFor="let routine of Me.Routines" 
             (click)="selectTask($event, routine)"
             [ngClass]="{ enabled: !MyChosenTask() }"
-            class="list-group-item" >
+            class="list-group-item " >
             {{routine}}
         </li>
       </ul>
@@ -14,7 +14,7 @@
   </div>
 
   <div class="list-group col-md-8">
-    <div class="card bg-dark">
+    <div class="card bg-warning">
       <div class="card-header text-white">
         Chosen Task
       </div>
@@ -29,9 +29,9 @@
     </div>
 
     <div class="card">
-        <img class="card-img" [src]="Model.Picture" />
+        <img class="card-img" *ngIf="Model.Picture" [src]="Model.Picture.url" />
         <div class="card-img-overlay" style="text-align: center">
-            <button class="btn btn-success btn-lg" (click)="flipPicture($event)"> Flip Picture </button>
+            <button class="btn btn-success btn-lg" (click)="flipPicture($event)"> Flip  the Picture </button>
         </div>
     </div>
   </div>

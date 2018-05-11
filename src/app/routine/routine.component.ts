@@ -21,14 +21,18 @@ export class RoutineComponent implements OnInit {
     private _Router: Router
   ){
     this.Me.Name = "Dhaval"
-    http.get(this._api + "/routines").subscribe(data=> this.Me.Routines = data.json())
-    
+    http.get(this._api + "/routines", { params : { userName: this.Me.Name } }).subscribe(data=> this.Me.Routines = data.json())
+    setInterval(()=> this.refresh(), 1000)
 }
     
   
 ngOnInit() {
   }
 
+refresh(){
+  this.http.get(this._api + "/state")
+      .subscribe(data=> this.Model = data.json())
+}
 flipPicture(e: MouseEvent){
   this.http.post(this._api + "/picture",{})
         .subscribe();
@@ -38,8 +42,13 @@ selectTask(e: MouseEvent, text: string){
 
   if(this.MyChosenTask()) return;
 
-  this.Model.ChosenTask.push({ Task: text, UserName: this.Me.Name, Chosen: false });
-  this.Me.Routines.splice( this.Me.Routines.indexOf(text), 1);
+  this.http.post(this._api + "/routines", { Task: text, UserName: this.Me.Name })
+        .subscribe(data=> {
+            if(data.json().success){
+                this.Me.Routines.splice(this.Me.Routines.indexOf(text), 1 );
+               
+            }
+        });
 }  
 
 MyChosenTask = () => this.Model.ChosenTask.find(x=> x.UserName == this.Me.Name );

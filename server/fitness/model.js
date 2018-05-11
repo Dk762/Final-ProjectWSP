@@ -37,9 +37,16 @@ function Fitness(){
     this.Users = [];
     this.Picture = null;
     this.ChosenTask = [];
-    this.GetRoutines = () => RoutinesStack.slice(iCurrentRoutine, iCurrentRoutine += 7);
+    this.GetRoutines = (userName) => {
+        if(this.Users.some(x => x.UserName == userName)){
+    
+        }else{
+            this.Users.push({ UserName: userName, Name: userName });
+        }
+        return RoutinesStack;
+    }
     this.FlipPicture = () => this.Picture = PicturesStack[iCurrentPicture = (iCurrentPicture + 1) % PicturesStack.length ];
-    this.selectTask = (text, userName) => this.ChosenTask.push({Task: text, UserName: userName });
+    this.SelectTask = (text, userName) => this.ChosenTask.push({Task: text, UserName: userName });
     
 }
 module.exports = Fitness;
