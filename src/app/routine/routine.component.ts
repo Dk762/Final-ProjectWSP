@@ -3,6 +3,7 @@ import { Fitness, User, Routine } from '../models/fitness'
 import { Router } from '@angular/router';
 import { RoutineService } from '../services/routine.service';
 import { Http } from "@angular/http";
+import { MessagesService } from '../services/messages.service';
 
 @Component({
   selector: 'app-routine',
@@ -18,10 +19,14 @@ export class RoutineComponent implements OnInit {
   constructor(
     private http: Http,
     private _Routine: RoutineService,
-    private _Router: Router
+    private _Router: Router,
+    private _Messages: MessagesService
   ){
-    this.Me.Name = "Dhaval"
-    http.get(this._api + "/routines", { params : { userName: this.Me.Name } }).subscribe(data=> this.Me.Routines = data.json())
+    this.Me = _Routine.Me;
+        if(!this.Me){
+            _Router.navigate(['/login']);
+        }
+        this.join(this.Me.Name);
     setInterval(()=> this.refresh(), 1000)
 }
     
@@ -49,9 +54,22 @@ selectTask(e: MouseEvent, text: string){
                
             }
         });
-}  
+} 
+chooseTask(e: MouseEvent, text: string){
+  e.preventDefault();
+
+
+}
+join(name: string){
+  this._Messages.Messages.push({ Text: 'You\'ve joined this app. Welcome ' + name , Type: 'success'})
+  this.http.get(this._api + "/routines", { params : { userName: name } })
+  .subscribe(data=> this.Me.Routines = data.json() )
+}
+
+
+
 
 MyChosenTask = () => this.Model.ChosenTask.find(x=> x.UserName == this.Me.Name );
-ChosenTask = () => this.Model.ChosenTask.find( x => x.Chosen );
+
 
 }

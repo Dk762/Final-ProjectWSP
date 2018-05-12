@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { RoutineService } from './services/routine.service';
 import { CarouselConfig } from 'ng-bootstrap/carousel/carousel.config';
 import { TopsliderComponent } from './topslider/topslider.component';
+import { MessagesService } from './services/messages.service';
 
 
 
@@ -42,7 +43,7 @@ import { TopsliderComponent } from './topslider/topslider.component';
     CarouselModule.forRoot(),
     NgbModule.forRoot()
   ],
-  providers: [RoutineService],
+  providers: [RoutineService, MessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
