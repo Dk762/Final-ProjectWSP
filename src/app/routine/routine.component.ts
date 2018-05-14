@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { RoutineService } from '../services/routine.service';
 import { Http } from "@angular/http";
 import { MessagesService } from '../services/messages.service';
+import { Observable } from 'rxjs/Observable';
+import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-routine',
@@ -78,6 +80,11 @@ join(name: string){
 
 MyChosenTask = () => this.Model.ChosenTask.find(x=> x.UserName == this.Me.Name );
 MyCompletedTask = () => this.Model.CompletedTask.find(x=> x.UserName == this.Me.Name);
-
+search = (text: Observable<string>) => 
+        text.pipe(
+            debounceTime(200),
+            distinctUntilChanged(),
+            map(x=> [x, "Hello", "World"] )
+        )
 
 }

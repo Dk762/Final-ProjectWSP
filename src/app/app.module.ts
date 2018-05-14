@@ -16,6 +16,7 @@ import { RoutineService } from './services/routine.service';
 import { CarouselConfig } from 'ng-bootstrap/carousel/carousel.config';
 import { TopsliderComponent } from './topslider/topslider.component';
 import { MessagesService } from './services/messages.service';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -41,7 +42,8 @@ import { MessagesService } from './services/messages.service';
       {path: '', redirectTo: '/home', pathMatch: 'full'}
     ]),
     CarouselModule.forRoot(),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    FormsModule,
   ],
   providers: [RoutineService, MessagesService],
   bootstrap: [AppComponent]

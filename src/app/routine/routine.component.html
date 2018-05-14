@@ -38,12 +38,24 @@
   <div class="col-md-4">
     <div class="card bg-info">
       <div class="card-header">Users</div>
+      <label for="typeahead-focus">Search for a User:</label>
+      <input
+      id="typeahead-focus"
+      type="text"
+      class="form-control"
+      [(ngModel)]="model"
+      [ngbTypeahead]="search"
+      (focus)="focus$.next($event.target.value)"
+      (click)="click$.next($event.target.value)"
+      #instance="ngbTypeahead"
+      />
       <ul class="list-group list-group-flush">
           <li *ngFor="let user of Model.Users" class="list-group-item">
             <img style="height: 16px; width: 16px" class="rounded">
             {{user.Name}}
             <i class="badge float-right" [ngClass]="user.UserId == this.Me.Name">
-                    {{user.Score}}
+                  {{user.Score}}
+            </i>        
           </li>
       </ul>
      </div> 
