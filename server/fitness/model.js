@@ -1,3 +1,4 @@
+
 var axios = require("axios");
 const RoutinesStack = [
         "In the Morning Do Yoga for 20 Minutes",
@@ -37,16 +38,22 @@ function Fitness(){
     this.Users = [];
     this.Picture = null;
     this.ChosenTask = [];
+    this.CompletedTask = [];
     this.GetRoutines = (userName) => {
         if(this.Users.some(x => x.UserName == userName)){
     
         }else{
-            this.Users.push({ UserName: userName, Name: userName });
+            this.Users.push({ UserName: userName, Name: userName, Score: 0 });
         }
         return RoutinesStack;
     }
     this.FlipPicture = () => this.Picture = PicturesStack[iCurrentPicture = (iCurrentPicture + 1) % PicturesStack.length ];
     this.SelectTask = (text, userName) => this.ChosenTask.push({Task: text, UserName: userName });
+    this.ChooseTask = (text, userName) => this.CompletedTask.push({ Task: text, UserName: userName });
+    ChosenTask.Chosen = true;
+    this.Users.find(x=> x.UserName == ChosenTask.UserName).Score++;
+
+    }
     
-}
+
 module.exports = Fitness;

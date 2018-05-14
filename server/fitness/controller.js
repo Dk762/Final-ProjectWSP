@@ -18,4 +18,10 @@ module.exports = app
         fitness.SelectTask(req.body.Task, req.body.UserName);
         res.send( { success: true } );
     })
+    .post('/routines/choose', (req, res) => {
+       console.log(req.body);
+            fitness.ChooseTask(req.body.Task, req.body.UserName)
+            res.send( { Success: true } );
+    })
+
     

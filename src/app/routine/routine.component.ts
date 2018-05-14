@@ -58,7 +58,14 @@ selectTask(e: MouseEvent, text: string){
 chooseTask(e: MouseEvent, text: string){
   e.preventDefault();
 
+  if(this.MyCompletedTask()) return;
 
+  this.http.post(this._api + "/routines/choose", { Task: text, UserName: this.Me.Name })
+      .subscribe(data=> {
+          if(data.json().success){
+              this.Me.ChosenTask.splice(this.Me.Routines.indexOf(text), 1);
+          }
+      });
 }
 join(name: string){
   this._Messages.Messages.push({ Text: 'You\'ve joined this app. Welcome ' + name , Type: 'success'})
@@ -70,6 +77,7 @@ join(name: string){
 
 
 MyChosenTask = () => this.Model.ChosenTask.find(x=> x.UserName == this.Me.Name );
+MyCompletedTask = () => this.Model.CompletedTask.find(x=> x.UserName == this.Me.Name);
 
 
 }
